@@ -58,7 +58,6 @@
         <activity android:name=".selectpic.PickBigImagesActivity"/>
         <activity android:name=".selectpic.PickOrTakeImageActivity"/>
 
-
         <!--   Mob配置   -->
         <activity
             android:name="com.mob.paysdk.PaymentActivity"
