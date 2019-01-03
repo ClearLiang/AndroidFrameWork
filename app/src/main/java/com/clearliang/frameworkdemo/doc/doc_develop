@@ -1,0 +1,84 @@
+多级列表的实现方法:
+
+(1)创建数据bean(包含一些属性信息);
+(2)转化为树节点TreeNode(id,parentId,bean);
+(3)用所有的树节点构建一棵树包括(根节点和其他节点);
+(4)Adapter的实现:
+    1)创建两个节点列表,一个保存list要显示的节点(showList),一个保存所有的节点(cache);
+    2)初始化是显示根节点;
+    3)每次的展开与收缩都是将被点击的节点的展开状态设为相反状态;
+    4)每次展开都是将所有的根节点和父节点为展开状态的节点设配到ListView中(清空showList,在cache中找到相应节点放到showList中);
+    5)在收缩方法中要注意把要收缩节点的子节点都从showList删去;
+    6)在adapter类中调用notifyOnDatasetChanged()方法;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+断点续传的实现方法：
+
+(1) 通过 RandomAccessFile raf = new RandomAccessFile(File file,String mode); 进行文件存储
+    通过 OutputStream和File 进行数据存储不能进行断点续传，File转为RandomAccessFile
+    模式mode一般用”rw”读写、”r”读。
+(2) 根据路径获取已经下载了的文件大小，从而获取断点时的长度 downloadLength
+(3) Request request = new Request.Builder()
+                    .addHeader("RANGE","bytes="+downloadLength+"-")  //断点续传要用到的，指示下载的区间
+                    .url(downloadUrl)
+                    .build();
+(4) raf.seek(downloadLength);//跳过已经下载的字节
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+手势操作：
+
+(1) 手指触碰屏幕时，触发MotionEvent事件！
+(2) 该事件被OnTouchListener监听，可在它的onTouch()方法中获得该MotionEvent对象！
+(3) 通过GestureDetector转发MotionEvent对象给OnGestureListener
+(4) 我们可以通过OnGestureListener获得该对象，然后获取相关信息，以及做相关处理！
+    MyGestureListener mMyGestureListener = new MyGestureListener();
+    GestureDetector mDetector = new GestureDetector(this, mMyGestureListener);
+    在 onTouchEvent 中返回 return mDetector.onTouchEvent(event);
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+密码
+
+(1) 初始化KeyStore        KeyStore mKeyStore = KeyStore.getInstance("AndroidKeyStore");
+(2) 初始化KeyGenerator    KeyGenerator mKeyGenerator = KeyGenerator.getInstance("AES", "AndroidKeyStore");
+(3) 初始化Cipher          Cipher defaultCipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/"
+                                            + KeyProperties.BLOCK_MODE_CBC + "/"
+                                            + KeyProperties.ENCRYPTION_PADDING_PKCS7);
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+当控件内部的RecycleView获取焦点，导致页面不从顶部显示的问题的解决办法：
+android:focusable="true"
+android:focusableInTouchMode="true"
+
+重写BasePresenter和BaseInterface，利用泛型简化Presenter和Interface
+
+tablayout + viewpager + fragment 导致的预加载不好控制，解决方案是BaseFragment
+
+adapter 需要调用interface或者Presenter的方法，如何实现（性能、解耦）
+
+UI 所有界面边距、宽高等需要一致
+
+生成的javabean需要以后台返回的数据为准，postman + GsonFormat
+
+页面注意数据刷新，如果需要及时数据，在tab设置重新获取数据，否者就加入刷新 pullRefresh
+
+页面跳转、关闭的方式，提示用户刷新页面的dialog
+
+判断某一模块或者功能当下是否对用户可见，可见的情况才加载布局和数据
+
+语言适配，开始就需要规范字符串内容和大小
+
+图片的高度 需要根据图片实际宽度进行一定的比例动态设置     宽度=300  3:2  高度=200
+
+图片查看器(多张图片查看)   图片添加器(九宫格等样式)   视频查看器
+
+前后端的数据交互一定要采用对象，例如视频集合、图片集合等都应该放在一个对象内，没有值传空
+如：
+Bean{
+    int id;
+    String name;
+    String text;
+    List<String> images;
+    List<String> videos;
+}
+
+权限动态申请可以使用Google提供的EasyPermissions

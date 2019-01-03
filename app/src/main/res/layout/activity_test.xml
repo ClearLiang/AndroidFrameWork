@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="按钮"
+        android:layout_centerInParent="true"
+        android:background="@color/qmui_config_color_white"/>
+
+    <Button
+        android:id="@+id/btn_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="左按钮"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="200px"
+        android:layout_marginTop="20dp"/>
+
+    <com.clearliang.frameworkdemo.view.widget.PayEdit
+        android:id="@+id/pay_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_left"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/btn_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="右按钮"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="200px"
+        android:layout_marginTop="20dp"/>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

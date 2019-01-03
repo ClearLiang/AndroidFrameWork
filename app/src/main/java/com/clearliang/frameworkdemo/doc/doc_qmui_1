@@ -1,0 +1,4 @@
+QMUI框架实现沉浸式的思路：
+
+    QMUI实现的是利用QMUIStatusBarHelper.translucent(this)将activity布局改为全屏模式，不再是statusBar下面布局，
+    然后通过设置topBar和布局根节点background的颜色(颜色大致相同，或者同一颜色不同透明度)

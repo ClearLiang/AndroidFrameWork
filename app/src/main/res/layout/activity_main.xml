@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/arl_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_color_theme_6"
+        android:fitsSystemWindows="true">
+
+        <com.qmuiteam.qmui.widget.QMUITopBar
+            android:id="@+id/topbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/qmui_topbar_height"
+            android:visibility="gone"/>
+
+        <com.qmuiteam.qmui.widget.QMUIViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/topbar"
+            android:layout_above="@+id/tabs"
+            android:background="?attr/app_content_bg_color"/>
+
+        <com.qmuiteam.qmui.widget.QMUITabSegment
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_alignParentBottom="true"
+            android:background="?attr/qmui_list_item_bg_with_border_top"
+            android:textSize="12sp"
+            app:qmui_tab_icon_position="top"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+
+
+    <!--侧滑菜单的布局 -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/drawer_header"
+        app:menu="@menu/menu_nav" />
+
+</android.support.v4.widget.DrawerLayout>
