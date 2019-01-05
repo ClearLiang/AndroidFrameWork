@@ -16,6 +16,10 @@ public interface GlobalConstants {
     int TYPE_PAUSED = 2;    //下载暂停
     int TYPE_CANCELED = 3;  //下载取消
 
+    int UPDATA_CLIENT = 2001;           //更新客户端
+    int GET_UNDATAINFO_ERROR = 2002;    //获取更新信息失败
+    int DOWN_ERROR = 2003;              //下载错误
+
     String TAG = "信息：";
 
     String DIRECTORY = "FrameWork";

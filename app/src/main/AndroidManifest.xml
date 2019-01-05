@@ -15,6 +15,8 @@
     <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
     <uses-permission android:name="android.permission.NFC" />
     <uses-feature    android:name="android.hardware.nfc.hce"/>
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
 
     <application
@@ -30,10 +32,10 @@
         <!--Mob配置-->
         <meta-data
             android:name="Mob-AppKey"
-            android:value="2940613d85d74"/>
+            android:value = "@string/mob_app_key"/>
         <meta-data
             android:name="Mob-AppSecret"
-            android:value="d34eee77c260b117a3aaedeccdff911e"/>
+            android:value="@string/mob_app_secret"/>
 
         <!--设计稿尺寸-->
         <meta-data
@@ -44,7 +46,7 @@
             android:value="1280" />
 
         <activity
-            android:name=".LoginActivity">
+            android:name=".testfile.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,7 +54,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".testfile.TestActivity" />
+        <activity android:name=".testfile.UpgradeActivity"/>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".view.activity.MainActivity"/>
         <activity android:name=".view.activity.WelcomeActivity" />
         <activity android:name=".selectpic.PickBigImagesActivity"/>
@@ -102,6 +105,20 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
+        <!--   bugly配置   -->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
     </application>
 
 </manifest>

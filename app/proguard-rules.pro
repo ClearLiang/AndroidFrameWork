@@ -21,3 +21,7 @@
 #-renamesourcefileattribute SourceFile
 -keep class com.mob.**{*;}
 -dontwarn com.mob.**
+
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
+-keep class android.support.**{*;}

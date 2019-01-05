@@ -21,14 +21,6 @@
         android:layout_marginLeft="200px"
         android:layout_marginTop="20dp"/>
 
-    <com.clearliang.frameworkdemo.view.widget.PayEdit
-        android:id="@+id/pay_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_left"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
-
     <Button
         android:id="@+id/btn_right"
         android:layout_width="wrap_content"

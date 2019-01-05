@@ -1,2 +1,24 @@
 
-注意Git用户名
+注意Git用户名（利用Git Bash重新设置）
+
+
+getDatabasePath():          /data/data/com.android.framework/databases/student.db
+getCacheDir():              /data/data/com.android.framework/cache
+getFilesDir():              /data/data/com.android.framework/files
+getDir("zhao"):             /data/data/com.android.framework/app_zhao
+getPackageCodePath():       /data/app/com.android.framework-1.apk
+getPackageResourcePath():   /data/app/com.android.framework-1.apk
+getExternalFilesDir():      /storage/emulated/0/Android/data/com.android.framework/files
+getExternalFilesDirs():     /storage/emulated/0/Android/data/com.android.framework/files
+getExternalFilesDirs():     /storage/ext_sd/Android/data/com.android.framework/files*******
+getExternalCacheDir():      /storage/emulated/0/Android/data/com.android.framework/cache
+getExternalCacheDirs():     /storage/emulated/0/Android/data/com.android.framework/cache
+getExternalCacheDirs():     /storage/ext_sd/Android/data/com.android.framework/cache*******
+getObbDir():                /storage/emulated/0/Android/obb/com.android.framework
+getObbDirs():               /storage/emulated/0/Android/obb/com.android.framework
+getObbDirs():               /storage/ext_sd/Android/obb/com.android.framework*******
+Environment.getExternalStorageState():      mounted
+Environment.getExternalStorageDirectory():  /storage/emulated/0
+Environment.getDownloadCacheDirectory():    /cache
+Environment.getRootDirectory():             /system
+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC):/storage/emulated/0/Music
