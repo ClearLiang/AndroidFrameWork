@@ -75,14 +75,14 @@ public class MobPayUtil {
         payApi.pay(order1, new OnPayListener<PayOrder>() {
             @Override
             public boolean onWillPay(String ticketId, PayOrder payOrder, MobPayAPI mobPayAPI) {
-                // TODO 保存本次支付操作的 ticketId
+                // 保存本次支付操作的 ticketId
                 // 返回false表示不阻止本次支付
                 return false;
             }
 
             @Override
             public void onPayEnd(PayResult payResult, PayOrder payOrder, MobPayAPI mobPayAPI) {
-                // TODO 处理支付的结果，成功或失败可以在payResult中获取
+                // 处理支付的结果，成功或失败可以在payResult中获取
                 switch (payResult.getPayCode()) {
                     case PAYCODE_CANCEL:
                         ToastUtils.showShort(R.string.string_pay_cancel);
@@ -117,14 +117,14 @@ public class MobPayUtil {
         payApi.pay(order1, new OnPayListener<PayOrder>() {
             @Override
             public boolean onWillPay(String ticketId, PayOrder payOrder, MobPayAPI mobPayAPI) {
-                // TODO 保存本次支付操作的 ticketId
+                // 保存本次支付操作的 ticketId
                 // 返回false表示不阻止本次支付
                 return false;
             }
 
             @Override
             public void onPayEnd(PayResult payResult, PayOrder payOrder, MobPayAPI mobPayAPI) {
-                // TODO 处理支付的结果，成功或失败可以在payResult中获取
+                // 处理支付的结果，成功或失败可以在payResult中获取
             }
         });
     }
@@ -134,14 +134,14 @@ public class MobPayUtil {
         payApi.pay(order1, new OnPayListener<PayOrder>() {
             @Override
             public boolean onWillPay(String ticketId, PayOrder payOrder, MobPayAPI mobPayAPI) {
-                // TODO 保存本次支付操作的 ticketId
+                // 保存本次支付操作的 ticketId
                 // 返回false表示不阻止本次支付
                 return false;
             }
 
             @Override
             public void onPayEnd(PayResult payResult, PayOrder payOrder, MobPayAPI mobPayAPI) {
-                // TODO 处理支付的结果，成功或失败可以在payResult中获取
+                // 处理支付的结果，成功或失败可以在payResult中获取
             }
         });
     }

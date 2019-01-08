@@ -929,7 +929,7 @@ public class PickOrTakeImageActivity extends Activity implements View.OnClickLis
                 if (picNums > 1) {
                     Intent intent = new Intent();
                     intent.setClass(PickOrTakeImageActivity.this, PickBigImagesActivity.class);
-                    //TODO 这里由于涉及到intent传递的数据不能太大的问题，所以如果需要，这里需要进行另外的处理，写入到内存或者写入到文件中
+                    // 这里由于涉及到intent传递的数据不能太大的问题，所以如果需要，这里需要进行另外的处理，写入到内存或者写入到文件中
                     intent.putExtra(PickBigImagesActivity.EXTRA_DATA, getAllImagesFromCurrentDirectory());
                     intent.putExtra(PickBigImagesActivity.EXTRA_ALL_PICK_DATA, picklist);
                     intent.putExtra(PickBigImagesActivity.EXTRA_CURRENT_PIC, position);

@@ -6,17 +6,19 @@ import android.support.annotation.Nullable;
 import android.view.MotionEvent;
 import android.widget.Button;
 
+import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.clearliang.frameworkdemo.R;
+import com.clearliang.frameworkdemo.service.MyAccessibilityService;
 import com.clearliang.frameworkdemo.utils.MoveViewUtil;
 import com.clearliang.frameworkdemo.utils.UpdateUtil;
 import com.clearliang.frameworkdemo.view.base.BaseActivity;
 import com.tencent.bugly.Bugly;
-import com.tencent.bugly.beta.download.DownloadTask;
+import com.tencent.bugly.beta.Beta;
 
 import rx.functions.Action1;
-
-import static com.tencent.bugly.beta.Beta.getStrategyTask;
 
 
 public class TestActivity extends BaseActivity<TestPresenter> implements TestPresenter.DataInterface {
@@ -75,16 +77,22 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestPre
             @Override
             public void call(Void aVoid) {
                 UpdateUtil.getUpdateUtil().
-                        checkVersion(TestActivity.this, "1.2","https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk");
+                        checkVersion(TestActivity.this, "1.2", "https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk");
             }
         });
 
         setClick(btnRight, new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-
+                if (!OpenAccessibilitySettingHelper.isAccessibilitySettingsOn(TestActivity.this,
+                        MyAccessibilityService.class.getName())){// 判断服务是否开启
+                    OpenAccessibilitySettingHelper.jumpToSettingPage(TestActivity.this);// 跳转到开启页面
+                }else {
+                    ToastUtils.showShort("服务已开启");
+                }
             }
         });
+
     }
 
     @Override
@@ -92,6 +100,7 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestPre
         super.onCreate(savedInstanceState);
 
         initView();
+
     }
 
 

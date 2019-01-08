@@ -72,7 +72,8 @@ public class UpgradeActivity extends Activity {
     private void initUpdate() {
         /*获取下载任务，初始化界面信息*/
         updateBtn(Beta.getStrategyTask());
-        tv.setText("0.00MB");
+
+        tv.setText(TranUtil.toMbString(Beta.getStrategyTask().getSavedLength()) + "MB");
 
         /*获取策略信息，初始化界面信息*/
         title.setText(Beta.getUpgradeInfo().title);

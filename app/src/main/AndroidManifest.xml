@@ -15,8 +15,8 @@
     <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
     <uses-permission android:name="android.permission.NFC" />
     <uses-feature    android:name="android.hardware.nfc.hce"/>
-    <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
 
 
     <application
@@ -27,7 +27,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".view.base.BaseApplication"
-        tools:replace="android:name">
+        tools:replace="android:name"
+        android:sharedUserId="android.uid.system">
 
         <!--Mob配置-->
         <meta-data
@@ -40,19 +41,10 @@
         <!--设计稿尺寸-->
         <meta-data
             android:name="design_width"
-            android:value="768" />
+            android:value="720" />
         <meta-data
             android:name="design_height"
             android:value="1280" />
-
-        <activity
-            android:name=".testfile.TestActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <activity android:name=".testfile.UpgradeActivity"/>
         <activity android:name=".LoginActivity" />
@@ -119,6 +111,39 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
+
+
+        <!-- 注册辅助功能服务 -->
+        <service
+            android:name=".service.MyAccessibilityService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/accessibility_tip"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:process=":BackgroundService">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <!-- 通过xml文件完成辅助功能相关配置，也可以在onServiceConnected中动态配置 -->
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_config" />
+        </service>
+        <activity
+            android:name=".testfile.TestActivity"/>
+
+        <activity
+            android:name=".testfile.AccessibilityActivity"
+            android:process=":BackgroundService">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
     </application>
 
 </manifest>

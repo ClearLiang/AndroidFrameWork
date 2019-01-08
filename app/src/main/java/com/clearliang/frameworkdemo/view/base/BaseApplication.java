@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.support.multidex.MultiDex;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.clearliang.frameworkdemo.R;
@@ -64,11 +65,11 @@ public class BaseApplication extends Application {
 
         instance = this;
 
+        LogUtils.e("AppVersionName:"+AppUtils.getAppVersionName(),"AppVersionCode:"+AppUtils.getAppVersionCode());
+
         initUpgradeDialog();
-
-        Bugly.init(getApplicationContext(), getResources().getString(R.string.bugly_app_id), false);
-
     }
+
 
     private void initUpgradeDialog() {
 
@@ -98,8 +99,6 @@ public class BaseApplication extends Application {
         //后续更新资源会保存在此目录，需要在manifest中添加WRITE_EXTERNAL_STORAGE权限;
         Beta.storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-        File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        LogUtils.e(dir);
         //已经确认过的弹窗在APP下次启动自动检查更新时会再次显示;
         Beta.showInterruptedStrategy = true;
 
@@ -107,10 +106,10 @@ public class BaseApplication extends Application {
         //Beta.canShowUpgradeActs.add(TestActivity.class);
 
         //设置Wifi下自动下载
-        Beta.autoDownloadOnWifi = true;
+        //Beta.autoDownloadOnWifi = true;
 
         /*在application中初始化时设置监听，监听策略的收取*/
-        Beta.upgradeListener = new UpgradeListener() {
+        /*Beta.upgradeListener = new UpgradeListener() {
 
             @Override
             public void onUpgrade(int ret, UpgradeInfo strategy, boolean isManual, boolean isSilence) {
@@ -129,7 +128,7 @@ public class BaseApplication extends Application {
                     LogUtils.e("bugly", "不需要更新,没有更新策略");
                 }
             }
-        };
+        };*/
 
         /* 设置更新状态回调接口 */
         Beta.upgradeStateListener = new UpgradeStateListener() {
@@ -158,6 +157,8 @@ public class BaseApplication extends Application {
                 Toast.makeText(getApplicationContext(),"UPGRADE_NO_VERSION",Toast.LENGTH_SHORT).show();
             }
         };
+
+        Bugly.init(getApplicationContext(), getResources().getString(R.string.bugly_app_id), false);
     }
 
     public static BaseApplication getInstance() {

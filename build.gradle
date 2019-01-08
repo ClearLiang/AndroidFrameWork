@@ -20,7 +20,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://jitpack.io" }//这就是添加的
+        maven { url "https://jitpack.io" }
     }
 }
 

@@ -63,7 +63,6 @@ public class UpdateUtil {
 
         @Override
         public void handleMessage(Message msg) {
-            // TODO Auto-generated method stub
             super.handleMessage(msg);
             switch (msg.what) {
                 case UPDATA_CLIENT:

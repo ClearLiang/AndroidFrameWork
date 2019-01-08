@@ -1,0 +1,70 @@
+
+accessibilityEventTypes：
+表示该服务对界面中的哪些变化感兴趣,即哪些事件通知,比如窗口打开,滑动,焦点变化,长按等.
+具体的值可以在AccessibilityEvent类中查到,如typeAllMask表示接受所有的事件通知.
+
+accessibilityFeedbackType：
+表示反馈方式,比如是语音播放,还是震动
+
+canRetrieveWindowContent：
+表示该服务能否访问活动窗口中的内容.也就是如果你希望在服务中获取窗体内容的化,则需要设置其值为true.
+
+notificationTimeout：
+接受事件的时间间隔,通常将其设置为100即可.
+
+packageNames：
+表示对该服务是用来监听哪个包的产生的事件
+
+
+description                 ：辅助功能描述，描述该辅助功能用来干嘛的
+packageNames                ：指定辅助功能监听的包名，不指定表示监听所有应用
+accessibilityEventTypes     ：辅助功能处理事件类型，一般配置为typeAllMask表示接收所有事件
+accessibilityFlags          ：辅助功能查找截点方式，一般配置为flagDefault默认方式。
+accessibilityFeedbackType   ：操作相应按钮以后辅助功能给用户的反馈类型，包括声音，震动等。
+notificationTimeout         ：相应时间设置
+canRetrieveWindowContent    ：是否允许辅助功能获得窗口的节点信息，为了能正常实用辅助功能，请务必保持该项配置为true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

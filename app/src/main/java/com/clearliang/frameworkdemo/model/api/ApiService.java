@@ -8,6 +8,8 @@ import retrofit2.adapter.rxjava.Result;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.Streaming;
+import retrofit2.http.Url;
 import rx.Observable;
 
 /**
@@ -42,6 +44,12 @@ public interface ApiService {
     /*获取到返回的Header和响应码的,用Observable<Result<T>> 代替 Observable<T>*/
     @GET("")
     Observable<Result<UserBean>> BlogService();
+
+    @Streaming //大文件时要加不然会OOM
+    @GET
+    Observable<ResponseBody> downloadFile(
+            @Url String fileUrl
+    );
 
 
 }
