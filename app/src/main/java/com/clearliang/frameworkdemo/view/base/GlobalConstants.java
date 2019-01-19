@@ -9,7 +9,7 @@ package com.clearliang.frameworkdemo.view.base;
 public interface GlobalConstants {
     int REQUEST_SCAN_CODE = 1001;       //扫描请求码
     int REQUEST_PAY_CODE = 1002;        //支付请求码
-    int REQUEST_FINGER_CODE = 1003;     //指纹请求码
+    int REQUEST_PICTURE_CODE = 1004;    //图片选择请求码
 
     int TYPE_SUCCESS = 0;   //下载成功
     int TYPE_FAILED = 1;    //下载失败

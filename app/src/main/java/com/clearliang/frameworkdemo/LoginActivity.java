@@ -2,6 +2,7 @@ package com.clearliang.frameworkdemo;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -13,12 +14,10 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.clearliang.frameworkdemo.model.bean.TokenCheckBean;
 import com.clearliang.frameworkdemo.model.bean.UserBean;
 import com.clearliang.frameworkdemo.presenter.LoginActivityPresenter;
-import com.clearliang.frameworkdemo.selectpic.PickOrTakeImageActivity;
 import com.clearliang.frameworkdemo.utils.RSAUtil;
 import com.clearliang.frameworkdemo.view.activity.MainActivity;
 import com.clearliang.frameworkdemo.view.base.BaseActivity;
 import com.clearliang.frameworkdemo.view.widget.LineTextView;
-import com.previewlibrary.GPreviewBuilder;
 
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -30,7 +29,7 @@ import rx.functions.Action1;
  * <p>
  * Function :
  */
-public class LoginActivity extends BaseActivity<LoginActivityPresenter> implements LoginActivityPresenter.LoginActivityInterface {
+public class LoginActivity extends BaseActivity<LoginActivityPresenter> implements LoginActivityPresenter.LoginActivityInterface{
 
     private EditText etUsername, etPassword;
     private ImageView ivBg;
@@ -55,10 +54,12 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter> implemen
 
     @Override
     protected void initEvent() {
+
+
         setClick(btnLogin, new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                openActivity(MainActivity.class);
+//                openActivity(MainActivity.class);
             }
         });
 
@@ -89,7 +90,7 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter> implemen
         ltvPassword.setText("密码");
         ltvPassword.setTestSize(18);
 
-        ivBg.setBackgroundResource(R.drawable.bg_login_6);
+        ivBg.setBackgroundResource(R.drawable.bg_login_3);
 
         String username = SPUtils.getInstance("UserInfo").getString(SP_USERNAME);
         etUsername.setText(username);
@@ -106,6 +107,14 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter> implemen
             String password = RSAUtil.getRSAUtil().myDecryption(pwd, privateKey);
             etPassword.setText(password);
         }
+
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override

@@ -2,30 +2,20 @@ package com.clearliang.frameworkdemo.view.base;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
-import android.os.Handler;
 import android.support.multidex.MultiDex;
 import android.widget.Toast;
 
-import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.clearliang.frameworkdemo.R;
 import com.clearliang.frameworkdemo.model.greendao.DaoMaster;
 import com.clearliang.frameworkdemo.model.greendao.DaoSession;
-import com.clearliang.frameworkdemo.testfile.TestActivity;
-import com.clearliang.frameworkdemo.testfile.UpgradeActivity;
-import com.mob.MobSDK;
 import com.previewlibrary.ZoomMediaLoader;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
-import com.tencent.bugly.beta.UpgradeInfo;
-import com.tencent.bugly.beta.upgrade.UpgradeListener;
 import com.tencent.bugly.beta.upgrade.UpgradeStateListener;
-
-import java.io.File;
 
 
 /**
@@ -54,8 +44,6 @@ public class BaseApplication extends Application {
                 .setLogSwitch(true)//log开关
                 .setGlobalTag(getClass().getSimpleName());//全局tag
 
-        MobSDK.init(this);
-
         ZoomMediaLoader.getInstance().init(new TestImageLoader());//初始化图片视频查看
 
         //是否开启debug模式，true表示打开debug模式，false表示关闭调试模式
@@ -65,12 +53,10 @@ public class BaseApplication extends Application {
 
         instance = this;
 
-        LogUtils.e("AppVersionName:"+AppUtils.getAppVersionName(),"AppVersionCode:"+AppUtils.getAppVersionCode());
-
-        initUpgradeDialog();
+        //initUpgradeDialog();
     }
 
-
+    // bugly更新设置
     private void initUpgradeDialog() {
 
         //自定义初始化开关
@@ -134,27 +120,27 @@ public class BaseApplication extends Application {
         Beta.upgradeStateListener = new UpgradeStateListener() {
             @Override
             public void onUpgradeSuccess(boolean isManual) {
-                Toast.makeText(getApplicationContext(),"UPGRADE_SUCCESS",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "UPGRADE_SUCCESS", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onUpgradeFailed(boolean isManual) {
-                Toast.makeText(getApplicationContext(),"UPGRADE_FAILED",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "UPGRADE_FAILED", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onUpgrading(boolean isManual) {
-                Toast.makeText(getApplicationContext(),"UPGRADE_CHECKING",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "UPGRADE_CHECKING", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onDownloadCompleted(boolean b) {
-                Toast.makeText(getApplicationContext(),"UPGRADE_COMPLETED",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "UPGRADE_COMPLETED", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onUpgradeNoVersion(boolean isManual) {
-                Toast.makeText(getApplicationContext(),"UPGRADE_NO_VERSION",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "UPGRADE_NO_VERSION", Toast.LENGTH_SHORT).show();
             }
         };
 

@@ -2,4 +2,19 @@
 <resources>
     <attr name="app_primary_color" format="color"/> <!-- topbar -->
     <attr name="app_content_bg_color" format="color"/> <!-- content-->
+
+    <!--自定义TitleBar-->
+    <declare-styleable name="MyCountdown">
+        <attr name="background_color" format="color" />
+        <attr name="border_color" format="color" />
+        <attr name="border_width" format="dimension" />
+
+        <attr name="text_size" format="dimension" />
+        <attr name="text_color" format="color" />
+        <attr name="show_right_text" format="boolean" />
+
+        <attr name="left_image" format="reference|integer" />
+        <attr name="show_left_image" format="boolean" />
+
+    </declare-styleable>
 </resources>

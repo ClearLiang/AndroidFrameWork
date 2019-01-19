@@ -1,24 +1,11 @@
 
-注意Git用户名（利用Git Bash重新设置）
+在listView中如果有textView存在，宽度尽量设置为match_parent而不是warp_parent
+因为warp_parent在调用setText时需要重新调用checkForRelayout函数，这个函数根据文字的多少重新开始布局
 
 
-getDatabasePath():          /data/data/com.android.framework/databases/student.db
-getCacheDir():              /data/data/com.android.framework/cache
-getFilesDir():              /data/data/com.android.framework/files
-getDir("zhao"):             /data/data/com.android.framework/app_zhao
-getPackageCodePath():       /data/app/com.android.framework-1.apk
-getPackageResourcePath():   /data/app/com.android.framework-1.apk
-getExternalFilesDir():      /storage/emulated/0/Android/data/com.android.framework/files
-getExternalFilesDirs():     /storage/emulated/0/Android/data/com.android.framework/files
-getExternalFilesDirs():     /storage/ext_sd/Android/data/com.android.framework/files*******
-getExternalCacheDir():      /storage/emulated/0/Android/data/com.android.framework/cache
-getExternalCacheDirs():     /storage/emulated/0/Android/data/com.android.framework/cache
-getExternalCacheDirs():     /storage/ext_sd/Android/data/com.android.framework/cache*******
-getObbDir():                /storage/emulated/0/Android/obb/com.android.framework
-getObbDirs():               /storage/emulated/0/Android/obb/com.android.framework
-getObbDirs():               /storage/ext_sd/Android/obb/com.android.framework*******
-Environment.getExternalStorageState():      mounted
-Environment.getExternalStorageDirectory():  /storage/emulated/0
-Environment.getDownloadCacheDirectory():    /cache
-Environment.getRootDirectory():             /system
-Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC):/storage/emulated/0/Music
+
+
+1. UI
+2. 网络
+3. 三方
+4.

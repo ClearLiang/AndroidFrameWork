@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.clearliang.frameworkdemo">
 
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.INTERNET" />                      <!-- 网络-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />         <!-- 读取内存卡-->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />          <!-- 允许应用程序改变网络状态-->
@@ -17,6 +18,14 @@
     <uses-feature    android:name="android.hardware.nfc.hce"/>
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <!-- 蓝牙分享所需的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
 
     <application
@@ -46,8 +55,19 @@
             android:name="design_height"
             android:value="1280" />
 
+        <activity
+            android:name=".testfile.TestActivity"
+            android:process=":BackgroundService">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".LoginActivity"/>
         <activity android:name=".testfile.UpgradeActivity"/>
-        <activity android:name=".LoginActivity" />
+        <!--<activity android:name=".LoginActivity" />-->
         <activity android:name=".view.activity.MainActivity"/>
         <activity android:name=".view.activity.WelcomeActivity" />
         <activity android:name=".selectpic.PickBigImagesActivity"/>
@@ -111,37 +131,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
-
-
-        <!-- 注册辅助功能服务 -->
-        <service
-            android:name=".service.MyAccessibilityService"
-            android:enabled="true"
-            android:exported="true"
-            android:label="@string/accessibility_tip"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
-            android:process=":BackgroundService">
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
-            </intent-filter>
-            <!-- 通过xml文件完成辅助功能相关配置，也可以在onServiceConnected中动态配置 -->
-            <meta-data
-                android:name="android.accessibilityservice"
-                android:resource="@xml/accessibility_config" />
-        </service>
-        <activity
-            android:name=".testfile.TestActivity"/>
-
-        <activity
-            android:name=".testfile.AccessibilityActivity"
-            android:process=":BackgroundService">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
 
 
     </application>

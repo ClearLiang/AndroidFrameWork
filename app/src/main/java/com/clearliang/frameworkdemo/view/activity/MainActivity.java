@@ -65,21 +65,6 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
 
     @Override
     protected void initEvent() {
-        /*setClick(btn, new Action1<Void>() {
-            @Override
-            public void call(Void aVoid) {
-                PayOrder order = new PayOrder();
-                order.setAmount(10);
-                order.setBody("支付主题");
-                order.setDescription("描述");
-                //order.setMetadata();
-                order.setOrderNo("10001");
-                order.setSubject("支付标题");
-
-                MobPayUtil.getMobPayUtil().initMobPay(order).setPayWay(MobPayUtil.ALIPAY);
-            }
-        });*/
-
         //抽屉内item监听
         navView.setNavigationItemSelectedListener(this);
     }
@@ -92,6 +77,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
         //initTopBar();
         initTabAndPager();
     }
+
 
     private void initTopBar() {
         topbar.setBackgroundColor(ContextCompat.getColor(this, R.color.app_color_theme_6));

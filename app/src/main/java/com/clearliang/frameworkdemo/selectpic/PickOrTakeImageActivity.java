@@ -3,6 +3,7 @@ package com.clearliang.frameworkdemo.selectpic;
 import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -41,6 +42,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.clearliang.frameworkdemo.R;
 
 import java.io.File;
@@ -147,6 +149,7 @@ public class PickOrTakeImageActivity extends Activity implements View.OnClickLis
         initData();
     }
 
+    @SuppressLint("ObjectAnimatorBinding")
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     protected void initView() {
         gridView = (GridView) findViewById(R.id.gv_content);
@@ -1059,10 +1062,18 @@ public class PickOrTakeImageActivity extends Activity implements View.OnClickLis
             Toast.makeText(this, getString(R.string.not_choose_any_pick), Toast.LENGTH_SHORT).show();
             return;
         }
+        //{
+        //	"path": "",
+        //	"name": ""
+        //}
         StringBuilder sb = new StringBuilder();
+        sb.append("[");
         for (String model : picklist) {
-            sb.append(model + "\n");
+            sb.append("{\"path\":"+"\""+model+"\"" + "},");
         }
+        sb.delete(sb.length()-1,sb.length());
+        sb.append("]");
+
         TextView textview = new TextView(this);
         textview.setText(sb);
         Dialog dialog = new Dialog(this);
@@ -1075,6 +1086,10 @@ public class PickOrTakeImageActivity extends Activity implements View.OnClickLis
 //        data.putExtra("data", list);
 //        setResult(RESULT_OK, data);
 //        finish();
+        Intent data = new Intent();
+        data.putExtra("data", sb.toString());
+        setResult(RESULT_OK, data);
+        finish();
     }
 
     /**

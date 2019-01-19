@@ -8,15 +8,17 @@
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="按钮"
-        android:layout_centerInParent="true"
-        android:background="@color/qmui_config_color_white"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="222dp"
+        android:background="@color/qmui_config_color_white"
+        android:text="按钮" />
 
     <Button
         android:id="@+id/btn_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="左按钮"
+        android:text="左按钮1"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="200px"
         android:layout_marginTop="20dp"/>
@@ -25,10 +27,42 @@
         android:id="@+id/btn_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="右按钮"
+        android:text="右按钮1"
         android:layout_alignParentRight="true"
         android:layout_marginRight="200px"
         android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btn_left1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btn_left"
+        android:text="左按钮2" />
+
+    <Button
+        android:id="@+id/btn_right1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/btn_left"
+        android:text="右按钮2" />
+
+    <com.clearliang.frameworkdemo.view.widget.Countdown
+        android:id="@+id/countdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="156dp" />
+
+    <com.clearliang.frameworkdemo.view.widget.Countdown
+        android:id="@+id/countdown2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="218dp" />
 
 
 </com.zhy.autolayout.AutoRelativeLayout>

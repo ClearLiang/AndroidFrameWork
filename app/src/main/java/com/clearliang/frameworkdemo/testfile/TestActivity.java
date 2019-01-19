@@ -1,22 +1,25 @@
 package com.clearliang.frameworkdemo.testfile;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 
-import com.blankj.utilcode.util.AppUtils;
+import com.alibaba.fastjson.JSON;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
-import com.blankj.utilcode.util.ToastUtils;
+import com.clearliang.frameworkdemo.LoginActivity;
 import com.clearliang.frameworkdemo.R;
-import com.clearliang.frameworkdemo.service.MyAccessibilityService;
+import com.clearliang.frameworkdemo.model.bean.PictureBean;
 import com.clearliang.frameworkdemo.utils.MoveViewUtil;
-import com.clearliang.frameworkdemo.utils.UpdateUtil;
 import com.clearliang.frameworkdemo.view.base.BaseActivity;
-import com.tencent.bugly.Bugly;
-import com.tencent.bugly.beta.Beta;
+import com.clearliang.frameworkdemo.view.widget.Countdown;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import rx.functions.Action1;
 
@@ -25,6 +28,11 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestPre
     private Button btn;
     private Button btnLeft;
     private Button btnRight;
+    private List<PictureBean> mList;
+    private Countdown countdown;
+    private Countdown countdown2;
+    private Button btnLeft1;
+    private Button btnRight1;
 
     @Override
     protected TestPresenter createPresenter() {
@@ -38,7 +46,12 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestPre
 
     @Override
     protected void initData() {
-
+        mList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            PictureBean pictureBean = new PictureBean();
+            pictureBean.setPath("我是" + i);
+            mList.add(pictureBean);
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -76,20 +89,35 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestPre
         setClick(btnLeft, new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                UpdateUtil.getUpdateUtil().
-                        checkVersion(TestActivity.this, "1.2", "https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk");
+                countdown.startTimer(new Countdown.OnStateListener() {
+                    @Override
+                    public void onTimeListener(int remaining) {
+                        LogUtils.e("剩余时间：", remaining);
+                    }
+                });
+                //LogUtils.e(JSON.toJSONString(mList));
+                //UpdateUtil.getUpdateUtil().checkVersion(TestActivity.this, "1.2", "https://qd.myapp.com/myapp/qqteam/AndroidQQ/mobileqq_android.apk");
             }
         });
 
         setClick(btnRight, new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                if (!OpenAccessibilitySettingHelper.isAccessibilitySettingsOn(TestActivity.this,
-                        MyAccessibilityService.class.getName())){// 判断服务是否开启
-                    OpenAccessibilitySettingHelper.jumpToSettingPage(TestActivity.this);// 跳转到开启页面
-                }else {
-                    ToastUtils.showShort("服务已开启");
-                }
+                countdown.setDelayTime(269);
+            }
+        });
+
+        countdown.getRelativeLayout().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LogUtils.e("点击了RelativeLayout");
+            }
+        });
+
+        countdown2.getTimer().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LogUtils.e("点击了TextView");
             }
         });
 
@@ -103,12 +131,43 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestPre
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case REQUEST_PICTURE_CODE:
+                if (resultCode == RESULT_OK) {
+                    Bundle bundle = data.getExtras();
+                    String listString = bundle.getString("data");
+                    List<PictureBean> picList = JSON.parseArray(listString, PictureBean.class);
+                    LogUtils.e(JSON.toJSONString(picList));
+                }
+                break;
+        }
+    }
 
     private void initView() {
         btn = (Button) findViewById(R.id.btn);
         btnLeft = (Button) findViewById(R.id.btn_left);
         btnRight = (Button) findViewById(R.id.btn_right);
 
+        countdown = (Countdown) findViewById(R.id.countdown);
+        countdown.setBorderWidth(2);
+        countdown.setBorderColor(getResources().getColor(R.color.app_color_theme_5));
+        countdown.setBgColor(getResources().getColor(R.color.app_color_theme_2));
+
+        countdown.setTextSize(18);
+        countdown.setTextColor(getResources().getColor(R.color.qmui_config_color_black));
+
+        countdown2 = (Countdown) findViewById(R.id.countdown2);
+        countdown2.setBorderWidth(2);
+        countdown2.setBorderColor(getResources().getColor(R.color.app_color_theme_2));
+        countdown2.setBgColor(getResources().getColor(R.color.app_color_theme_4));
+        countdown2.setDelayTime(60);
+        countdown2.setTextSize(18);
+        countdown2.setTextColor(getResources().getColor(R.color.qmui_config_color_black));
+        btnLeft1 = (Button) findViewById(R.id.btn_left1);
+        btnRight1 = (Button) findViewById(R.id.btn_right1);
     }
 
 
