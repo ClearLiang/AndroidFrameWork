@@ -20,6 +20,15 @@ import rx.subscriptions.CompositeSubscription;
  **/
 public abstract class BasePresenter<T> implements GlobalConstants {
     protected static final String TAG = "BasePresenter";
+    protected BaseInterface baseInterface;
+
+    public interface BaseInterface {
+        void getMsg(String msg);
+
+        void showLoading(String s);
+
+        void hideLoading();
+    }
 
     Reference<T> mViewRef;//防止发生内存泄露，使用弱引用
     protected ApiService apiStores;

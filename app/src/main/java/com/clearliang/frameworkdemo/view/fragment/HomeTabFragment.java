@@ -30,7 +30,7 @@ public class HomeTabFragment extends BaseFragment<HomeTabFragmentPresenter> impl
 
     @Override
     protected HomeTabFragmentPresenter createPresenter() {
-        return new HomeTabFragmentPresenter();
+        return new HomeTabFragmentPresenter(this);
     }
 
     public static HomeTabFragment newInstance(String msg) {
@@ -90,5 +90,20 @@ public class HomeTabFragment extends BaseFragment<HomeTabFragmentPresenter> impl
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void getMsg(String msg) {
+
+    }
+
+    @Override
+    public void showLoading(String s) {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }

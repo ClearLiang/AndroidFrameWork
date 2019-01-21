@@ -14,7 +14,7 @@ import com.clearliang.frameworkdemo.view.base.BaseActivity;
 public class RegisterActivity extends BaseActivity<RegisterActivityPresenter> implements RegisterActivityPresenter.RegisterActivityInterface {
     @Override
     protected RegisterActivityPresenter createPresenter() {
-        return new RegisterActivityPresenter();
+        return new RegisterActivityPresenter(this);
     }
 
     @Override
@@ -37,4 +37,18 @@ public class RegisterActivity extends BaseActivity<RegisterActivityPresenter> im
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    public void getMsg(String msg) {
+
+    }
+
+    @Override
+    public void showLoading(String s) {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
 }

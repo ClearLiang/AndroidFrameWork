@@ -11,162 +11,172 @@
         android:alpha="0.7"
         android:background="@drawable/bg_login" />
 
-    <LinearLayout
-        android:id="@+id/ll_username"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="150dp"
-        android:orientation="horizontal"
-        android:focusable="true"
-        android:focusableInTouchMode="true"   >
-
-        <com.clearliang.frameworkdemo.view.widget.LineTextView
-            android:id="@+id/ltv_username"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|right"
-            android:textAllCaps="false"
-            android:textSize="15sp" />
-
-        <EditText
-            android:id="@+id/et_username"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:background="@null"
-            android:text=""
-            android:textCursorDrawable="@drawable/shape_my_cursor"/>
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view_1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/ll_username"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/app_color_description" />
-
-    <LinearLayout
-        android:id="@+id/ll_password"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/view_1"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:orientation="horizontal"
-        android:focusable="true"
-        android:focusableInTouchMode="true"   >
-
-        <com.clearliang.frameworkdemo.view.widget.LineTextView
-            android:id="@+id/ltv_password"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|right"
-            android:textAllCaps="false"
-            android:textSize="15sp" />
-
-        <EditText
-            android:id="@+id/et_password"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:background="@null"
-            android:inputType="textPassword"
-            android:text=""
-            android:textCursorDrawable="@drawable/shape_my_cursor"/>
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view_2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/ll_password"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/app_color_description" />
-
     <RelativeLayout
-        android:id="@+id/ll_register"
-        android:layout_width="match_parent"
+        android:id="@+id/arl_1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_password"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="100dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
-        <TextView
-            android:id="@+id/tv_register"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/ll_username"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"   >
+
+            <com.clearliang.frameworkdemo.view.widget.LineTextView
+                android:id="@+id/ltv_username"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:textAllCaps="false"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:text=""
+                android:textCursorDrawable="@drawable/shape_my_cursor"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/ll_username"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/app_color_description" />
+
+        <LinearLayout
+            android:id="@+id/ll_password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/view_1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"   >
+
+            <com.clearliang.frameworkdemo.view.widget.LineTextView
+                android:id="@+id/ltv_password"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:textAllCaps="false"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:text=""
+                android:textCursorDrawable="@drawable/shape_my_cursor"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/ll_password"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/app_color_description" />
+
+        <RelativeLayout
+            android:id="@+id/ll_register"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingBottom="10px"
-            android:paddingLeft="15px"
-            android:paddingRight="15px"
-            android:paddingTop="10px"
-            android:text="@string/tv_register"
+            android:layout_below="@+id/ll_password"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingBottom="10px"
+                android:paddingLeft="15px"
+                android:paddingRight="15px"
+                android:paddingTop="10px"
+                android:text="@string/tv_register"
+                android:textAllCaps="false"
+                android:textColor="@color/qmui_config_color_gray_1"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_register"
+                android:paddingBottom="10px"
+                android:paddingLeft="15px"
+                android:paddingRight="15px"
+                android:paddingTop="10px"
+                android:text="@string/tv_forget"
+                android:textAllCaps="false"
+                android:textColor="@color/qmui_config_color_gray_1"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/cb_save"
+                android:text="@string/tv_remember"
+                android:textAllCaps="false"
+                android:textColor="@color/qmui_config_color_gray_1"
+                android:textSize="13sp" />
+
+            <CheckBox
+                android:id="@+id/cb_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:checked="false" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_register"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/s_btn_login"
+            android:text="@string/tv_login"
             android:textAllCaps="false"
-            android:textColor="@color/qmui_config_color_gray_1"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/tv_forget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/tv_register"
-            android:paddingBottom="10px"
-            android:paddingLeft="15px"
-            android:paddingRight="15px"
-            android:paddingTop="10px"
-            android:text="@string/tv_forget"
-            android:textAllCaps="false"
-            android:textColor="@color/qmui_config_color_gray_1"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/tv_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/cb_save"
-            android:text="@string/tv_remember"
-            android:textAllCaps="false"
-            android:textColor="@color/qmui_config_color_gray_1"
-            android:textSize="13sp" />
-
-        <CheckBox
-            android:id="@+id/cb_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:checked="false" />
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_register"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/s_btn_login"
-        android:text="@string/tv_login"
-        android:textAllCaps="false"
-        android:textColor="#ffffff"
-        android:textSize="18sp" />
 
 </RelativeLayout>

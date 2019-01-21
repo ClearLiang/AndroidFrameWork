@@ -16,11 +16,11 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityPresenter
 
     private LoginActivityInterface loginActivityInterface;
 
+    public LoginActivityPresenter(LoginActivityInterface loginActivityInterface) {
+        this.loginActivityInterface = loginActivityInterface;
+    }
+
     public interface LoginActivityInterface {
-
-        void showLoading(String s);
-
-        void hideLoading();
 
         void login(UserBean userBean);
 
@@ -31,7 +31,7 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityPresenter
     //登录
     public void login(String username, String password) {
 
-        loginActivityInterface.showLoading("登录中...");
+        baseInterface.showLoading("登录中...");
 
         addSubscription(apiStores.login(username, password), new Subscriber<UserBean>() {
             @Override
@@ -41,14 +41,14 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityPresenter
 
             @Override
             public void onError(Throwable e) {
-                loginActivityInterface.hideLoading();
+                baseInterface.hideLoading();
                 LogUtils.e(e.toString());
             }
 
             @Override
             public void onNext(UserBean userBean) {
                 loginActivityInterface.login(userBean);
-                loginActivityInterface.hideLoading();
+                baseInterface.hideLoading();
             }
         });
     }
@@ -56,7 +56,7 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityPresenter
     // 验证token是否过期
     public void checkToken(String token) {
 
-        loginActivityInterface.showLoading("登录中...");
+        baseInterface.showLoading("登录中...");
 
         addSubscription(apiStores.checkToken(token), new Subscriber<TokenCheckBean>() {
             @Override
@@ -66,14 +66,14 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityPresenter
 
             @Override
             public void onError(Throwable e) {
-                loginActivityInterface.hideLoading();
+                baseInterface.hideLoading();
                 LogUtils.e(e.toString());
             }
 
             @Override
             public void onNext(TokenCheckBean tokenCheckBean) {
                 loginActivityInterface.checkToken(tokenCheckBean);
-                loginActivityInterface.hideLoading();
+                baseInterface.hideLoading();
             }
         });
     }

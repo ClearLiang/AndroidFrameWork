@@ -10,6 +10,10 @@ import com.clearliang.frameworkdemo.view.base.BasePresenter;
 public class WelcomeActivityPresenter extends BasePresenter<WelcomeActivityPresenter.WelcomeActivityInterface> {
     private WelcomeActivityInterface welcomeActivityInterface;
 
+    public WelcomeActivityPresenter(WelcomeActivityInterface welcomeActivityInterface) {
+        this.welcomeActivityInterface = welcomeActivityInterface;
+    }
+
     public interface WelcomeActivityInterface {
         void showLoading(String msg);
         void hideLoading();

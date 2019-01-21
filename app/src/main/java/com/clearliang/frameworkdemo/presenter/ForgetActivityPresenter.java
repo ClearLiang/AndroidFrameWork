@@ -8,10 +8,14 @@ import com.clearliang.frameworkdemo.view.base.BasePresenter;
  * Function :
  */
 public class ForgetActivityPresenter extends BasePresenter<ForgetActivityPresenter.ForgetActivityInterface> {
-    public ForgetActivityInterface forgetActivityInterface;
+    private ForgetActivityInterface forgetActivityInterface;
+
+    public ForgetActivityPresenter(ForgetActivityInterface forgetActivityInterface) {
+        this.forgetActivityInterface = forgetActivityInterface;
+    }
 
     public interface ForgetActivityInterface {
-        void getMsg1(String msg);
+
     }
 
 

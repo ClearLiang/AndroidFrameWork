@@ -159,7 +159,7 @@ public class Countdown extends LinearLayout {
     }
 
     @SuppressLint("HandlerLeak")
-    Handler handler = new Handler(){
+    Handler  handler = new Handler(){
         public void handleMessage(Message msg){
             switch (msg.what) {
                 case 1:

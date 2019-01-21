@@ -10,6 +10,10 @@ import com.clearliang.frameworkdemo.view.base.BasePresenter;
 public class RegisterActivityPresenter extends BasePresenter<RegisterActivityPresenter.RegisterActivityInterface> {
     private RegisterActivityInterface registerActivityInterface;
 
+    public RegisterActivityPresenter(RegisterActivityInterface registerActivityInterface) {
+        this.registerActivityInterface = registerActivityInterface;
+    }
+
     public interface RegisterActivityInterface {
 
     }

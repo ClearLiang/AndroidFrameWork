@@ -27,7 +27,7 @@ import rx.functions.Action1;
  * onAttach()  =>  onCreate()  =>  onCreateView()  =>  onActivityCreated()  =>  onStart()  =>  onResume()
  * =>  onPause()  =>  onStop()  =>  onDestroyView()  =>  onDestroy()  =>  onDetach()
  * */
-public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
+public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements BasePresenter.BaseInterface,GlobalConstants {
     protected Bundle mBundle = new Bundle();
     protected T mPresenter;
     protected Activity mActivity;

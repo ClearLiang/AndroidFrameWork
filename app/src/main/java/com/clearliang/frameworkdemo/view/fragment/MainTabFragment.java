@@ -26,7 +26,7 @@ public class MainTabFragment extends BaseFragment<MainTabFragmentPresenter> impl
 
     @Override
     protected MainTabFragmentPresenter createPresenter() {
-        return new MainTabFragmentPresenter();
+        return new MainTabFragmentPresenter(this);
     }
 
     @Override
@@ -79,5 +79,20 @@ public class MainTabFragment extends BaseFragment<MainTabFragmentPresenter> impl
             }
         });
         topbar.setTitle("Main界面");
+    }
+
+    @Override
+    public void getMsg(String msg) {
+
+    }
+
+    @Override
+    public void showLoading(String s) {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }

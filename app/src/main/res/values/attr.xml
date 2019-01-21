@@ -3,7 +3,7 @@
     <attr name="app_primary_color" format="color"/> <!-- topbar -->
     <attr name="app_content_bg_color" format="color"/> <!-- content-->
 
-    <!--自定义TitleBar-->
+    <!--自定义倒计时-->
     <declare-styleable name="MyCountdown">
         <attr name="background_color" format="color" />
         <attr name="border_color" format="color" />

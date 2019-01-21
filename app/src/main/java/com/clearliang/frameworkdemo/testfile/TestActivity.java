@@ -132,6 +132,13 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestPre
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        countdown.endTimer();
+        countdown2.endTimer();
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
@@ -171,4 +178,18 @@ public class TestActivity extends BaseActivity<TestPresenter> implements TestPre
     }
 
 
+    @Override
+    public void getMsg(String msg) {
+
+    }
+
+    @Override
+    public void showLoading(String s) {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
 }

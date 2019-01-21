@@ -10,6 +10,10 @@ import com.clearliang.frameworkdemo.view.base.BasePresenter;
 public class HomeTabFragmentPresenter extends BasePresenter<HomeTabFragmentPresenter.HomeTabFragmentInterface> {
     private HomeTabFragmentInterface homeTabFragmentInterface;
 
+    public HomeTabFragmentPresenter(HomeTabFragmentInterface homeTabFragmentInterface) {
+        this.homeTabFragmentInterface = homeTabFragmentInterface;
+    }
+
     public interface HomeTabFragmentInterface {
 
     }

@@ -10,6 +10,10 @@ import com.clearliang.frameworkdemo.view.base.BasePresenter;
 public class MainTabFragmentPresenter extends BasePresenter<MainTabFragmentPresenter.MainTabFragmentInterface> {
     private MainTabFragmentInterface mainTabFragmentInterface;
 
+    public MainTabFragmentPresenter(MainTabFragmentInterface mainTabFragmentInterface) {
+        this.mainTabFragmentInterface = mainTabFragmentInterface;
+    }
+
     public interface MainTabFragmentInterface {
 
     }

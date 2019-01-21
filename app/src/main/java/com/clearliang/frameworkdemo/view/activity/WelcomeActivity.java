@@ -28,7 +28,7 @@ public class WelcomeActivity extends BaseActivity<WelcomeActivityPresenter> impl
 
     @Override
     protected WelcomeActivityPresenter createPresenter() {
-        return new WelcomeActivityPresenter();
+        return new WelcomeActivityPresenter(this);
     }
 
     @Override
@@ -88,6 +88,11 @@ public class WelcomeActivity extends BaseActivity<WelcomeActivityPresenter> impl
     private void initView() {
         alBg = (RelativeLayout) findViewById(R.id.al_bg);
         tvTime = (TextView) findViewById(R.id.tv_time);
+
+    }
+
+    @Override
+    public void getMsg(String msg) {
 
     }
 

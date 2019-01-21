@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
@@ -29,17 +30,18 @@ import rx.functions.Action1;
  * <p>
  * Function :
  */
-public class LoginActivity extends BaseActivity<LoginActivityPresenter> implements LoginActivityPresenter.LoginActivityInterface{
+public class LoginActivity extends BaseActivity<LoginActivityPresenter> implements LoginActivityPresenter.LoginActivityInterface {
 
     private EditText etUsername, etPassword;
     private ImageView ivBg;
     private TextView tvRegister, tvForget;
     private CheckBox cbSave;
     private Button btnLogin;
+    private RelativeLayout arl1;
 
     @Override
     protected LoginActivityPresenter createPresenter() {
-        return new LoginActivityPresenter();
+        return new LoginActivityPresenter(this);
     }
 
     @Override
@@ -55,11 +57,10 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter> implemen
     @Override
     protected void initEvent() {
 
-
         setClick(btnLogin, new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-//                openActivity(MainActivity.class);
+                openActivity(MainActivity.class);
             }
         });
 
@@ -90,7 +91,7 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter> implemen
         ltvPassword.setText("密码");
         ltvPassword.setTestSize(18);
 
-        ivBg.setBackgroundResource(R.drawable.bg_login_3);
+        //ivBg.setBackgroundResource(R.drawable.bg_login_3);
 
         String username = SPUtils.getInstance("UserInfo").getString(SP_USERNAME);
         etUsername.setText(username);
@@ -108,13 +109,10 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter> implemen
             etPassword.setText(password);
         }
 
+        arl1 = (RelativeLayout) findViewById(R.id.arl_1);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        arl1.setBackgroundColor(setColorAlpha(R.color.white,0.2f));
 
-            }
-        });
     }
 
     @Override
@@ -150,6 +148,11 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter> implemen
         //LogUtils.e("加密后", encryptData);
         SPUtils.getInstance("UserInfo").put(SP_USERNAME, etUsername.getText().toString().trim());
         SPUtils.getInstance("UserInfo").put(SP_PASSWORD, encryptData);
+    }
+
+    @Override
+    public void getMsg(String msg) {
+
     }
 
     @Override

@@ -2,10 +2,3 @@
 在listView中如果有textView存在，宽度尽量设置为match_parent而不是warp_parent
 因为warp_parent在调用setText时需要重新调用checkForRelayout函数，这个函数根据文字的多少重新开始布局
 
-
-
-
-1. UI
-2. 网络
-3. 三方
-4.

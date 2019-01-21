@@ -26,7 +26,7 @@ public class UserTabFragment extends BaseFragment<UserTabFragmentPresenter> impl
 
     @Override
     protected UserTabFragmentPresenter createPresenter() {
-        return new UserTabFragmentPresenter();
+        return new UserTabFragmentPresenter(this);
     }
 
     @Override
@@ -79,5 +79,20 @@ public class UserTabFragment extends BaseFragment<UserTabFragmentPresenter> impl
             }
         });
         topbar.setTitle("User界面");
+    }
+
+    @Override
+    public void getMsg(String msg) {
+
+    }
+
+    @Override
+    public void showLoading(String s) {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }

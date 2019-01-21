@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
 
     @Override
     protected MainActivityPresenter createPresenter() {
-        return new MainActivityPresenter();
+        return new MainActivityPresenter(this);
     }
 
     @Override
@@ -109,6 +109,11 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
         tabs = (QMUITabSegment) findViewById(R.id.tabs);
 
         arlParent.setBackgroundColor(setColorAlpha(R.color.app_color_theme_6, 0.8f));
+    }
+
+    @Override
+    public void getMsg(String msg) {
+
     }
 
     @Override

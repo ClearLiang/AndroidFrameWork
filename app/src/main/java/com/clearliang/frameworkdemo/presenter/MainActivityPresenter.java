@@ -25,6 +25,10 @@ import java.io.IOException;
 public class MainActivityPresenter extends BasePresenter<MainActivityPresenter.MainActivityInterface> {
     private MainActivityInterface mainActivityInterface;
 
+    public MainActivityPresenter(MainActivityInterface mainActivityInterface) {
+        this.mainActivityInterface = mainActivityInterface;
+    }
+
     public interface MainActivityInterface {
         void showLoading(String msg);
         void hideLoading();

@@ -24,7 +24,7 @@ import rx.functions.Action1;
  * @描述 Activity的基类
  **/
 
-abstract public class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements GlobalConstants {
+abstract public class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements BasePresenter.BaseInterface,GlobalConstants {
     protected Bundle mBundle = new Bundle();
     protected T mPresenter;
     protected boolean isTouchEvent = true;

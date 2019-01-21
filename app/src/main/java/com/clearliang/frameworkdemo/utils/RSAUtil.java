@@ -1,10 +1,12 @@
 package com.clearliang.frameworkdemo.utils;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.Base64;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.clearliang.frameworkdemo.view.base.BaseApplication;
 
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
@@ -31,13 +33,15 @@ import sun.misc.BASE64Decoder;
 
 public class RSAUtil {
     private static RSAUtil sRSAUtil;
-
+    private Context mContext;
     private RSAUtil() {
+        mContext = BaseApplication.getInstance();// 使用Application 的context
     }
-
-    public static synchronized RSAUtil getRSAUtil() {
-        if (sRSAUtil == null) {
-            sRSAUtil = new RSAUtil();
+    public static RSAUtil getRSAUtil() {
+        if (sRSAUtil != null) {
+            synchronized (RSAUtil.class){
+                sRSAUtil = new RSAUtil();
+            }
         }
         return sRSAUtil;
     }

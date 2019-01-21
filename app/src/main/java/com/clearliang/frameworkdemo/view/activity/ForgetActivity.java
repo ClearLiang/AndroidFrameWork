@@ -14,7 +14,7 @@ import com.clearliang.frameworkdemo.view.base.BaseActivity;
 public class ForgetActivity extends BaseActivity<ForgetActivityPresenter> implements ForgetActivityPresenter.ForgetActivityInterface {
     @Override
     protected ForgetActivityPresenter createPresenter() {
-        return new ForgetActivityPresenter();
+        return new ForgetActivityPresenter(this);
     }
 
     @Override
@@ -37,8 +37,19 @@ public class ForgetActivity extends BaseActivity<ForgetActivityPresenter> implem
         super.onCreate(savedInstanceState);
     }
 
+
     @Override
-    public void getMsg1(String msg) {
+    public void getMsg(String msg) {
+
+    }
+
+    @Override
+    public void showLoading(String s) {
+
+    }
+
+    @Override
+    public void hideLoading() {
 
     }
 }
