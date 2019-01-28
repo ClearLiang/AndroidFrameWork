@@ -11,6 +11,7 @@ import com.jakewharton.rxbinding.view.RxView;
 import com.qmuiteam.qmui.util.QMUIColorHelper;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +25,7 @@ import rx.functions.Action1;
  * @描述 Activity的基类
  **/
 
-abstract public class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements BasePresenter.BaseInterface,GlobalConstants {
+abstract public class BaseActivity<V,T extends BasePresenter<V>> extends AppCompatActivity implements GlobalConstants{
     protected Bundle mBundle = new Bundle();
     protected T mPresenter;
     protected boolean isTouchEvent = true;
@@ -44,11 +45,14 @@ abstract public class BaseActivity<T extends BasePresenter> extends AppCompatAct
         super.onCreate(savedInstanceState);
         QMUIStatusBarHelper.translucent(this);//沉浸式
 
+        RefWatcher refWatcher = BaseApplication.getRefWatcher(this);
+        refWatcher.watch(this);
+
         if (getLayoutId() != 0)
             setContentView(getLayoutId());
 
         mPresenter = createPresenter();
-        mPresenter.attachView(this);
+        mPresenter.attachView((V)this);
         AppManager.getAppManager().addActivity(this);
         //LogUtils.i(getClass().getSimpleName());
 

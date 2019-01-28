@@ -7,13 +7,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.clearliang.frameworkdemo.model.bean.LoginBean;
 import com.clearliang.frameworkdemo.model.bean.TokenCheckBean;
-import com.clearliang.frameworkdemo.model.bean.UserBean;
 import com.clearliang.frameworkdemo.presenter.LoginActivityPresenter;
 import com.clearliang.frameworkdemo.utils.RSAUtil;
 import com.clearliang.frameworkdemo.view.activity.MainActivity;
@@ -30,14 +33,25 @@ import rx.functions.Action1;
  * <p>
  * Function :
  */
-public class LoginActivity extends BaseActivity<LoginActivityPresenter> implements LoginActivityPresenter.LoginActivityInterface {
+public class LoginActivity extends BaseActivity<LoginActivityPresenter.LoginActivityInterface, LoginActivityPresenter>
+        implements LoginActivityPresenter.LoginActivityInterface {
 
-    private EditText etUsername, etPassword;
     private ImageView ivBg;
-    private TextView tvRegister, tvForget;
+    private RelativeLayout arl1;
+    private LinearLayout llUsername;
+    private LineTextView ltvUsername;
+    private EditText etUsername;
+    private View view1;
+    private LinearLayout llPassword;
+    private LineTextView ltvPassword;
+    private EditText etPassword;
+    private View view2;
+    private RelativeLayout llRegister;
+    private TextView tvRegister;
+    private TextView tvForget;
+    private TextView tvSave;
     private CheckBox cbSave;
     private Button btnLogin;
-    private RelativeLayout arl1;
 
     @Override
     protected LoginActivityPresenter createPresenter() {
@@ -70,29 +84,32 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter> implemen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
-        String currentToken = SPUtils.getInstance(SP_USERINFO).getString(SP_TOKEN);
+        //String currentToken = SPUtils.getInstance(SP_USERINFO).getString(SP_TOKEN);
         //mPresenter.checkToken(currentToken);//验证token
     }
 
     private void initView() {
-        etUsername = (EditText) findViewById(R.id.et_username);
-        etPassword = (EditText) findViewById(R.id.et_password);
         ivBg = (ImageView) findViewById(R.id.iv_bg);
+        arl1 = (RelativeLayout) findViewById(R.id.arl_1);
+        llUsername = (LinearLayout) findViewById(R.id.ll_username);
+        ltvUsername = (LineTextView) findViewById(R.id.ltv_username);
+        etUsername = (EditText) findViewById(R.id.et_username);
+        view1 = (View) findViewById(R.id.view_1);
+        llPassword = (LinearLayout) findViewById(R.id.ll_password);
+        ltvPassword = (LineTextView) findViewById(R.id.ltv_password);
+        etPassword = (EditText) findViewById(R.id.et_password);
+        view2 = (View) findViewById(R.id.view_2);
+        llRegister = (RelativeLayout) findViewById(R.id.ll_register);
         tvRegister = (TextView) findViewById(R.id.tv_register);
         tvForget = (TextView) findViewById(R.id.tv_forget);
+        tvSave = (TextView) findViewById(R.id.tv_save);
         cbSave = (CheckBox) findViewById(R.id.cb_save);
         btnLogin = (Button) findViewById(R.id.btn_login);
-
-        LineTextView ltvUsername = (LineTextView) findViewById(R.id.ltv_username);
-        LineTextView ltvPassword = (LineTextView) findViewById(R.id.ltv_password);
 
         ltvUsername.setText("用户名");
         ltvUsername.setTestSize(18);
         ltvPassword.setText("密码");
         ltvPassword.setTestSize(18);
-
-        //ivBg.setBackgroundResource(R.drawable.bg_login_3);
-
         String username = SPUtils.getInstance("UserInfo").getString(SP_USERNAME);
         etUsername.setText(username);
 
@@ -109,16 +126,14 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter> implemen
             etPassword.setText(password);
         }
 
-        arl1 = (RelativeLayout) findViewById(R.id.arl_1);
-
-        arl1.setBackgroundColor(setColorAlpha(R.color.white,0.2f));
-
+        arl1.setBackgroundColor(setColorAlpha(R.color.white, 0.2f));
     }
 
     @Override
-    public void login(UserBean userBean) {
+    public void login(LoginBean userBean) {
+        LogUtils.e(JSON.toJSONString(userBean));
         if (cbSave.isChecked()) {
-            SPUtils.getInstance("UserInfo").put(SP_TOKEN, userBean.getToken());
+            SPUtils.getInstance("UserInfo").put(SP_TOKEN, userBean.getData().getToken());
             saveLoginInfo(etPassword.getText().toString().trim());
         }
     }
@@ -151,17 +166,12 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter> implemen
     }
 
     @Override
-    public void getMsg(String msg) {
+    public void showLoading(String s) {
 
-    }
-
-    @Override
-    public void showLoading(String msg) {
-        showLoadingDialog();
     }
 
     @Override
     public void hideLoading() {
-        hideLoadingDialog();
+
     }
 }

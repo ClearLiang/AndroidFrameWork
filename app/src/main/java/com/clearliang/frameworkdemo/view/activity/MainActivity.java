@@ -9,7 +9,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.clearliang.frameworkdemo.LoginActivity;
 import com.clearliang.frameworkdemo.R;
@@ -31,17 +30,15 @@ import com.zhy.autolayout.AutoRelativeLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity<MainActivityPresenter> implements
+public class MainActivity extends BaseActivity<MainActivityPresenter.MainActivityInterface, MainActivityPresenter> implements
         MainActivityPresenter.MainActivityInterface, NavigationView.OnNavigationItemSelectedListener {
-
-    private QMUITopBar topbar;
+    private List<Fragment> mFragments = new ArrayList<>();
+    private DrawerLayout drawerLayout;
     private AutoRelativeLayout arlParent;
-    private NavigationView navView;
-    private DrawerLayout drawer;
+    private QMUITopBar topbar;
     private QMUIViewPager pager;
     private QMUITabSegment tabs;
-
-    private List<Fragment> mFragments = new ArrayList<>();
+    private NavigationView navView;
 
     @Override
     protected MainActivityPresenter createPresenter() {
@@ -72,10 +69,15 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initView();
+        initSetting();
         //initTopBar();
         initTabAndPager();
+    }
+
+    private void initSetting() {
+        arlParent.setBackgroundColor(setColorAlpha(R.color.app_color_theme_6, 0.8f));
+
     }
 
 
@@ -84,35 +86,25 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
         topbar.addLeftImageButton(R.drawable.vector_drawable_menu_, R.id.topbar_left_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawer.openDrawer(GravityCompat.START);
+                drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
-
-        arlParent.setBackgroundColor(setColorAlpha(R.color.app_color_theme_6, 0.6f));
         topbar.setTitle("沉浸式状态栏示例");
     }
 
     private void initView() {
-        topbar = (QMUITopBar) findViewById(R.id.topbar);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         arlParent = (AutoRelativeLayout) findViewById(R.id.arl_parent);
-        navView = (NavigationView) findViewById(R.id.nav_view);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-
-        TextView tvHeader = (TextView) navView.getHeaderView(0).findViewById(R.id.tv_introduce);
-        TextView tvIntro = (TextView) navView.getHeaderView(0).findViewById(R.id.tv_name);
-        tvHeader.setText("这里是用户名");
-        tvIntro.setText("这里是用户的描述");
-
+        topbar = (QMUITopBar) findViewById(R.id.topbar);
         pager = (QMUIViewPager) findViewById(R.id.pager);
         tabs = (QMUITabSegment) findViewById(R.id.tabs);
+        navView = (NavigationView) findViewById(R.id.nav_view);
 
-        arlParent.setBackgroundColor(setColorAlpha(R.color.app_color_theme_6, 0.8f));
-    }
+        /*TextView tvHeader = (TextView) navView.getHeaderView(0).findViewById(R.id.tv_introduce);
+        TextView tvIntro = (TextView) navView.getHeaderView(0).findViewById(R.id.tv_name);
+        tvHeader.setText("这里是用户名");
+        tvIntro.setText("这里是用户的描述");*/
 
-    @Override
-    public void getMsg(String msg) {
 
     }
 
@@ -128,10 +120,9 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            int mCurrentDialogStyle = com.qmuiteam.qmui.R.style.QMUI_Dialog;
             new QMUIDialog.MessageDialogBuilder(this)
                     .setTitle("标题")
                     .setMessage("是否需要退出？")
@@ -149,7 +140,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
                             openActivity(LoginActivity.class);
                         }
                     })
-                    .create(mCurrentDialogStyle).show();
+                    .create(R.style.QMUI_Dialog).show();
         }
     }
 
@@ -176,7 +167,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
             case R.id.nav_6://
                 break;
         }
-        drawer.closeDrawer(GravityCompat.START);
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -241,6 +232,5 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
         });
 
     }
-
 
 }

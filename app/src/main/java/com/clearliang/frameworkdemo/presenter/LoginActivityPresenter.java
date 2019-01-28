@@ -1,8 +1,9 @@
 package com.clearliang.frameworkdemo.presenter;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.clearliang.frameworkdemo.model.bean.LoginBean;
 import com.clearliang.frameworkdemo.model.bean.TokenCheckBean;
-import com.clearliang.frameworkdemo.model.bean.UserBean;
+import com.clearliang.frameworkdemo.view.base.BaseInterface;
 import com.clearliang.frameworkdemo.view.base.BasePresenter;
 
 import rx.Subscriber;
@@ -20,9 +21,9 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityPresenter
         this.loginActivityInterface = loginActivityInterface;
     }
 
-    public interface LoginActivityInterface {
+    public interface LoginActivityInterface extends BaseInterface {
 
-        void login(UserBean userBean);
+        void login(LoginBean userBean);
 
         void checkToken(TokenCheckBean tokenCheckBean);
 
@@ -31,9 +32,8 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityPresenter
     //登录
     public void login(String username, String password) {
 
-        baseInterface.showLoading("登录中...");
-
-        addSubscription(apiStores.login(username, password), new Subscriber<UserBean>() {
+        loginActivityInterface.showLoading("Loading...");
+        addSubscription(apiStores.login(username, password, false), new Subscriber<LoginBean>() {
             @Override
             public void onCompleted() {
 
@@ -41,14 +41,14 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityPresenter
 
             @Override
             public void onError(Throwable e) {
-                baseInterface.hideLoading();
+                loginActivityInterface.hideLoading();
                 LogUtils.e(e.toString());
             }
 
             @Override
-            public void onNext(UserBean userBean) {
+            public void onNext(LoginBean userBean) {
+                loginActivityInterface.hideLoading();
                 loginActivityInterface.login(userBean);
-                baseInterface.hideLoading();
             }
         });
     }
@@ -56,7 +56,7 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityPresenter
     // 验证token是否过期
     public void checkToken(String token) {
 
-        baseInterface.showLoading("登录中...");
+        loginActivityInterface.showLoading("登录中...");
 
         addSubscription(apiStores.checkToken(token), new Subscriber<TokenCheckBean>() {
             @Override
@@ -66,14 +66,14 @@ public class LoginActivityPresenter extends BasePresenter<LoginActivityPresenter
 
             @Override
             public void onError(Throwable e) {
-                baseInterface.hideLoading();
+                loginActivityInterface.hideLoading();
                 LogUtils.e(e.toString());
             }
 
             @Override
             public void onNext(TokenCheckBean tokenCheckBean) {
                 loginActivityInterface.checkToken(tokenCheckBean);
-                baseInterface.hideLoading();
+                loginActivityInterface.hideLoading();
             }
         });
     }

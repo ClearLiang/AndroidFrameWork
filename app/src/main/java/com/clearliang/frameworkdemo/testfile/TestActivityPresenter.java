@@ -1,4 +1,4 @@
-package com.clearliang.frameworkdemo.presenter;
+package com.clearliang.frameworkdemo.testfile;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.clearliang.frameworkdemo.model.bean.LoginBean;
@@ -12,14 +12,14 @@ import rx.Subscriber;
  * <p>
  * Function :
  */
-public class RegisterActivityPresenter extends BasePresenter<RegisterActivityPresenter.RegisterActivityInterface> {
-    private RegisterActivityInterface registerActivityInterface;
+public class TestActivityPresenter extends BasePresenter<TestActivityPresenter.TestActivityInterface>{
+    private TestActivityInterface testActivityInterface;
 
-    public RegisterActivityPresenter(RegisterActivityInterface registerActivityInterface) {
-        this.registerActivityInterface = registerActivityInterface;
+    public TestActivityPresenter(TestActivityInterface testActivityInterface) {
+        this.testActivityInterface = testActivityInterface;
     }
 
-    public interface RegisterActivityInterface extends BaseInterface {
+    public interface TestActivityInterface extends BaseInterface {
 
         void login(LoginBean userBean);
     }
@@ -27,7 +27,7 @@ public class RegisterActivityPresenter extends BasePresenter<RegisterActivityPre
     //登录
     public void login(String username, String password) {
 
-        registerActivityInterface.showLoading("Loading...");
+        testActivityInterface.showLoading("Loading...");
         addSubscription(apiStores.login(username, password, false), new Subscriber<LoginBean>() {
             @Override
             public void onCompleted() {
@@ -36,14 +36,14 @@ public class RegisterActivityPresenter extends BasePresenter<RegisterActivityPre
 
             @Override
             public void onError(Throwable e) {
-                registerActivityInterface.hideLoading();
+                testActivityInterface.hideLoading();
                 LogUtils.e(e.toString());
             }
 
             @Override
             public void onNext(LoginBean userBean) {
-                registerActivityInterface.hideLoading();
-                registerActivityInterface.login(userBean);
+                testActivityInterface.hideLoading();
+                testActivityInterface.login(userBean);
             }
         });
     }

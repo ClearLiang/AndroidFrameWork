@@ -1,5 +1,6 @@
 package com.clearliang.frameworkdemo.model.api;
 
+import com.clearliang.frameworkdemo.model.bean.LoginBean;
 import com.clearliang.frameworkdemo.model.bean.TokenCheckBean;
 import com.clearliang.frameworkdemo.model.bean.UserBean;
 
@@ -18,15 +19,26 @@ import rx.Observable;
  * @描述 @desc
  **/
 public interface ApiService {
-    String API_SERVER_IP = "http://123.456.789.0:8080/";
-    String API_SERVER_URL = API_SERVER_IP + "abc/";
+    //String API_SERVER_IP = "http://123.456.789.0:8080/";
+    String API_SERVER_IP = "https://api.2808proxy.com/";
+    String API_SERVER_URL = API_SERVER_IP /*+ ""*/;
+
+
+
+    //登陆
+    @GET("api/login")
+    Observable<LoginBean> login(
+            @Query("username") String username,
+            @Query("password") String password,
+            @Query("change_token") boolean isChangeToken
+    );
 
     // 登陆
-    @POST("client/login")
+    /*@POST("client/login")
     Observable<UserBean> login(
             @Query("username") String username,
             @Query("password") String password
-    );
+    );*/
 
     // 验证token
     @POST("client/token")

@@ -92,18 +92,4 @@ public class HomeTabFragment extends BaseFragment<HomeTabFragmentPresenter> impl
         super.onActivityCreated(savedInstanceState);
     }
 
-    @Override
-    public void getMsg(String msg) {
-
-    }
-
-    @Override
-    public void showLoading(String s) {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
 }

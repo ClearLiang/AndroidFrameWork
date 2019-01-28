@@ -12,11 +12,16 @@ import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.LogUtils;
+import com.clearliang.frameworkdemo.model.bean.LoginBean;
+import com.clearliang.frameworkdemo.view.base.BaseInterface;
 import com.clearliang.frameworkdemo.view.base.BasePresenter;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import rx.Subscriber;
 
 /**
  * Created by 99794 on 2018/4/13.
@@ -29,9 +34,8 @@ public class MainActivityPresenter extends BasePresenter<MainActivityPresenter.M
         this.mainActivityInterface = mainActivityInterface;
     }
 
-    public interface MainActivityInterface {
-        void showLoading(String msg);
-        void hideLoading();
+    public interface MainActivityInterface extends BaseInterface {
+
     }
 
     public void showInputDialog(final Activity activity, final Bitmap bitmap) {
@@ -102,6 +106,5 @@ public class MainActivityPresenter extends BasePresenter<MainActivityPresenter.M
         intent.setData(uri);
         activity.sendBroadcast(intent);
     }
-
 
 }

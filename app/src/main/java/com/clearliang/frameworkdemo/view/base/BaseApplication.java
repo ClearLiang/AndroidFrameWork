@@ -13,6 +13,8 @@ import com.clearliang.frameworkdemo.R;
 import com.clearliang.frameworkdemo.model.greendao.DaoMaster;
 import com.clearliang.frameworkdemo.model.greendao.DaoSession;
 import com.previewlibrary.ZoomMediaLoader;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.upgrade.UpgradeStateListener;
@@ -29,6 +31,7 @@ public class BaseApplication extends Application {
     private static SQLiteDatabase db;
     private static DaoSession mDaoSession;
     private static BaseApplication instance;
+    private RefWatcher refWatcher;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -53,7 +56,13 @@ public class BaseApplication extends Application {
 
         instance = this;
 
+        refWatcher = LeakCanary.install(this);
         //initUpgradeDialog();
+    }
+
+    public static RefWatcher getRefWatcher(Context context){
+        BaseApplication application = (BaseApplication)context.getApplicationContext();
+        return application.refWatcher;
     }
 
     // bugly更新设置

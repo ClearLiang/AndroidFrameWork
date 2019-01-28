@@ -56,8 +56,7 @@
             android:value="1280" />
 
         <!--<activity
-            android:name=".testfile.TestActivity"
-            android:process=":BackgroundService">
+            android:name=".testfile.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -66,8 +65,7 @@
         </activity>-->
 
         <activity
-            android:name=".LoginActivity"
-            android:process=":BackgroundService">
+            android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -76,9 +74,8 @@
         </activity>
 
         <activity android:name=".testfile.UpgradeActivity"/>
-        <!--<activity android:name=".LoginActivity" />-->
         <activity android:name=".view.activity.MainActivity"/>
-        <activity android:name=".view.activity.WelcomeActivity" />
+        <activity android:name=".view.activity.RegisterActivity"/>
         <activity android:name=".selectpic.PickBigImagesActivity"/>
         <activity android:name=".selectpic.PickOrTakeImageActivity"/>
 

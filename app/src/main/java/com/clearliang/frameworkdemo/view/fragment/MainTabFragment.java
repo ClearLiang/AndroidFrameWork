@@ -81,18 +81,4 @@ public class MainTabFragment extends BaseFragment<MainTabFragmentPresenter> impl
         topbar.setTitle("Main界面");
     }
 
-    @Override
-    public void getMsg(String msg) {
-
-    }
-
-    @Override
-    public void showLoading(String s) {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
 }

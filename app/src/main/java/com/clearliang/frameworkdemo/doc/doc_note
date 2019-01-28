@@ -2,3 +2,9 @@
 在listView中如果有textView存在，宽度尽量设置为match_parent而不是warp_parent
 因为warp_parent在调用setText时需要重新调用checkForRelayout函数，这个函数根据文字的多少重新开始布局
 
+每一个非静态内部类的实例都会持有外部Activity的实例引用
+
+内存泄漏解决思路
+1. 去除隐式引用（通过静态内部类来去除隐式引用）
+2. 手动管理对象引用（修改静态内部类的构造方式，手动引入其外部类引用）
+3. 当内存不可用时，不执行不可控代码（Android可以结合智能指针，WeakReference包裹外部类实例）
