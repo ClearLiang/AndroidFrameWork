@@ -96,19 +96,20 @@ public class NotificationUtil {
 
         //设置图片,通知标题,发送时间,提示方式等属性
         Notification.Builder mBuilder = new Notification.Builder(mContext);
-        mBuilder.setContentTitle(title)                        //标题
-                .setContentText(text)      //内容
-                //.setSubText("——记住我叫叶良辰")                    //内容下面的一小段文字
-                //.setTicker("收到叶良辰发送过来的信息~")             //收到信息后状态栏显示的文字信息
-                .setWhen(System.currentTimeMillis())           //设置通知时间
-                .setSmallIcon(smallIcon)            //设置小图标
-                .setLargeIcon(LargeBitmap)                     //设置大图标
+        mBuilder.setContentTitle(title)                         //标题
+                .setContentText(text)                           //内容
+                //.setSubText("——记住我叫叶良辰")              //内容下面的一小段文字
+                //.setTicker("收到叶良辰发送过来的信息~")        //收到信息后状态栏显示的文字信息
+                .setWhen(System.currentTimeMillis())            //设置通知时间
+                .setSmallIcon(smallIcon)                        //设置小图标
+                .setLargeIcon(LargeBitmap)                      //设置大图标
                 .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)    //设置默认的三色灯与振动器
                 //.setSound(Uri.parse("android.resource://" + mContext.getPackageName() + "/" + R.raw.biaobiao))  //设置自定义的提示音
-                .setAutoCancel(true)                           //设置点击后取消Notification
-                .setContentIntent(pit);                        //设置PendingIntent
+                .setAutoCancel(true)                            //设置点击后取消Notification
+                .setContentIntent(pit);                         //设置PendingIntent
         notification = mBuilder.build();
         mNManager.notify(NOTIFYID_1, notification);
+
     }
 
     public void closeNotification(){

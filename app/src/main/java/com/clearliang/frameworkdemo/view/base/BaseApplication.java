@@ -19,6 +19,8 @@ import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.upgrade.UpgradeStateListener;
 
+import cn.jpush.android.api.JPushInterface;
+
 
 /**
  * @作者 ClearLiang
@@ -56,8 +58,16 @@ public class BaseApplication extends Application {
 
         instance = this;
 
+        initJPush();
+
         refWatcher = LeakCanary.install(this);
         //initUpgradeDialog();
+
+    }
+
+    private void initJPush() {
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
 
     public static RefWatcher getRefWatcher(Context context){

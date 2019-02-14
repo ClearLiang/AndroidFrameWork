@@ -1,6 +1,11 @@
 package com.clearliang.frameworkdemo;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.blankj.utilcode.util.LogUtils;
@@ -18,6 +24,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.clearliang.frameworkdemo.model.bean.LoginBean;
 import com.clearliang.frameworkdemo.model.bean.TokenCheckBean;
 import com.clearliang.frameworkdemo.presenter.LoginActivityPresenter;
+import com.clearliang.frameworkdemo.utils.NotificationUtil;
 import com.clearliang.frameworkdemo.utils.RSAUtil;
 import com.clearliang.frameworkdemo.view.activity.MainActivity;
 import com.clearliang.frameworkdemo.view.base.BaseActivity;
@@ -86,6 +93,14 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter.LoginActi
         initView();
         //String currentToken = SPUtils.getInstance(SP_USERINFO).getString(SP_TOKEN);
         //mPresenter.checkToken(currentToken);//验证token
+
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
+
+        intentFilter = new IntentFilter();
+        intentFilter.addAction("com.clearliang.AnotherBroadcastReceiver");
+        localReceiver = new LocalReceiver();
+        //注册本地接收器
+        localBroadcastManager.registerReceiver(localReceiver, intentFilter);
     }
 
     private void initView() {
@@ -167,11 +182,51 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter.LoginActi
 
     @Override
     public void showLoading(String s) {
-
+        showLoadingDialog(s);
     }
 
     @Override
     public void hideLoading() {
+        hideLoadingDialog();
+    }
+
+    private IntentFilter intentFilter;
+    private LocalReceiver localReceiver;
+    private LocalBroadcastManager localBroadcastManager;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        localBroadcastManager.unregisterReceiver(localReceiver);
+    }
+
+    private class LocalReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            String title = intent.getExtras().getString("title");
+            String message = intent.getExtras().getString("message");
+            Toast.makeText(context, "收到本地广播" + title + message, Toast.LENGTH_SHORT).show();
+            initRemoteViews(title, message);
+        }
+    }
+
+    private void initRemoteViews(String title, String message) {
+        //1.创建RemoteViews实例
+        //RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.widget_remote);
+        //remoteViews.setTextViewText(R.id.tv_widget_remote_1, "123456qwerty");
+        //remoteViews.setImageViewResource(R.id.imageView3, R.drawable.qmui_icon_checkbox_checked);
+
+        //2.构建一个打开Activity的PendingIntent
+        //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        //PendingIntent mPendingIntent = PendingIntent.getActivity(LoginActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //3.创建一个Notification
+        //showNotification(int largeBitmap,String title,String text,int smallIcon,Class intentClass)
+        //NotificationUtil.getNotificationUtils(LoginActivity.this).showNotification(null, mPendingIntent);
+        NotificationUtil.getNotificationUtils(LoginActivity.this).showNotification(
+                R.drawable.leak_canary_icon,
+                title, message, R.drawable.qmui_icon_switch_checked, MainActivity.class);
 
     }
 }
