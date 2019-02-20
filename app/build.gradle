@@ -125,7 +125,6 @@ dependencies {
     implementation 'org.greenrobot:greendao:3.2.2'
 
     // Base64
-
     //implementation files('libs/BASE64Encoder.jar')
 
     // 图片视频查看
@@ -135,10 +134,10 @@ dependencies {
 
     // bugly版本更新
     implementation(name: 'bugly_crashreport_upgrade-1.3.5', ext: 'aar')
+
+    // 内存泄漏监听
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-    implementation files('libs/jcore-android-1.2.7.jar')
-    implementation files('libs/jpush-android-3.1.8.jar')
 
     // 刷新列表
     implementation project(':refresh_library')
