@@ -1,8 +1,6 @@
 <resources>
-    <string name="app_name">FrameWorkDemo</string>
+    <string name="app_name">FrameWork</string>
     <string name="bugly_app_id">aafe177741</string>
-    <string name="mob_app_key">2940613d85d74</string>
-    <string name="mob_app_secret">d34eee77c260b117a3aaedeccdff911e</string>
 
     <string name="nav_header_desc">Navigation header</string>
     <string name="nav_header_subtitle">www.baidu.com</string>
@@ -52,15 +50,4 @@
     <string name="not_choose_any_pick">你还没有选择任何图片</string>
     <string name="uploading_images">正在批量上传</string>
 
-
-    <string name="accessibility_tip">开启辅助功能Sample</string>
-    <string name="accessibility_desc">开启辅助功能，让你的手机更智能一点</string>
-
-
-
-    <string name="wx_packet_open">com.tencent.mm:id/cv0</string>
-    <string name="wx_packet_get">com.tencent.mm:id/ao4</string>
-    <string name="wx_packet_back">com.tencent.mm:id/k4</string>
-    <string name="wx_packet_close">com.tencent.mm:id/cs9</string>
-    <string name="wx_packet_timeout">com.tencent.mm:id/cuz</string>
 </resources>
