@@ -47,9 +47,9 @@ public class MainActivity extends BaseActivity<MainActivityPresenter.MainActivit
 
     @Override
     protected void initData() {
-        MainTabFragment mainTabFragment = MainTabFragment.newInstance("微信 Arguments");
-        HomeTabFragment homeTabFragment = HomeTabFragment.newInstance("通讯录 Arguments");
-        UserTabFragment userTabFragment = UserTabFragment.newInstance("发现 Arguments");
+        MainTabFragment mainTabFragment = MainTabFragment.newInstance("消息 Arguments");
+        HomeTabFragment homeTabFragment = HomeTabFragment.newInstance("主页 Arguments");
+        UserTabFragment userTabFragment = UserTabFragment.newInstance("我的 Arguments");
         mFragments.add(mainTabFragment);
         mFragments.add(homeTabFragment);
         mFragments.add(userTabFragment);
