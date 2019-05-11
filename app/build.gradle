@@ -90,7 +90,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
 
     // BlankJ工具类
-    implementation 'com.blankj:utilcode:1.21.0'
+    implementation 'com.blankj:utilcode:1.23.7'
 
     // 控件的Rx监听
     implementation 'com.jakewharton.rxbinding:rxbinding:1.0.1'
