@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.clearliang.frameworkdemo.LoginActivity;
 import com.clearliang.frameworkdemo.R;
 import com.clearliang.frameworkdemo.adapter.MyPagerAdapter;
@@ -30,6 +31,7 @@ import com.zhy.autolayout.AutoRelativeLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+@Route(path = "/frameworkdemo/view/activity/MainActivity")
 public class MainActivity extends BaseActivity<MainActivityPresenter.MainActivityInterface, MainActivityPresenter> implements
         MainActivityPresenter.MainActivityInterface, NavigationView.OnNavigationItemSelectedListener {
     private List<Fragment> mFragments = new ArrayList<>();

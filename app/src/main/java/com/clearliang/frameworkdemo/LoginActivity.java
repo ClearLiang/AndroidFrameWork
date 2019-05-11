@@ -17,6 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
@@ -40,6 +42,7 @@ import rx.functions.Action1;
  * <p>
  * Function :
  */
+@Route(path = "/frameworkdemo/view/LoginActivity")
 public class LoginActivity extends BaseActivity<LoginActivityPresenter.LoginActivityInterface, LoginActivityPresenter>
         implements LoginActivityPresenter.LoginActivityInterface {
 
@@ -81,7 +84,16 @@ public class LoginActivity extends BaseActivity<LoginActivityPresenter.LoginActi
         setClick(btnLogin, new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                openActivity(MainActivity.class);
+                // 1. 应用内简单的跳转(通过URL跳转在'进阶用法'中)
+                ARouter.getInstance().build("/frameworkdemo/view/activity/MainActivity").navigation();
+
+                /*// 2. 跳转并携带参数
+                ARouter.getInstance().build("/test/1")
+                        .withLong("key1", 666L)
+                        .withString("key3", "888")
+                        .withObject("key4", new Test("Jack", "Rose"))
+                        .navigation();*/
+                //openActivity(MainActivity.class);
             }
         });
 

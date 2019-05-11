@@ -23,6 +23,12 @@ android {
         }
 
         multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     repositories {
@@ -153,4 +159,8 @@ dependencies {
 
     // 刷新列表
     implementation project(':refresh_library')
+
+    // 阿里 ARouter
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 }
