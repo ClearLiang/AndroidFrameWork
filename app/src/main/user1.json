@@ -1,8 +1,8 @@
 {
     "persons":[
         {"name": "Tom","email": "123@qq.com"}, 
-        {"name": "Tom","email": "123@qq.com"}, 
-        {"name": "Tom","email": "123@qq.com"}
+        {"name": "Jerry","email": "456@qq.com"}, 
+        {"name": "Anmi","email": "789@qq.com"}
     ],
     "count":3
 }
