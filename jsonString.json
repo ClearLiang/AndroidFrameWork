@@ -4,17 +4,17 @@
 	"data": [{
 			"text": "今天是美好的",
 			"color": "0xffffff00",
-	  		"fontSize": 14
+	  		"fontSize": 14.0
 		},
 		{
 			"text": "星期日",
 			"color": "0xffff0000",
-	  		"fontSize": 18
+	  		"fontSize": 18.0
 		},
 		{
 			"text": "，我和小明",
 			"color": "0xffffff00",
-	  		"fontSize": 14
+	  		"fontSize": 14.0
 		}
 	]
 }
