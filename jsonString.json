@@ -3,7 +3,7 @@
 	"msg": "sucess",
 	"data": [{
 			"type": 1,
-			"text": "今天是美好的",
+			"text": "今天是美好的\n",
 			"color": "0xFF000000",
 			"fontSize": 14,
 			"width": 0,
@@ -19,7 +19,7 @@
 		},
 		{
 			"type": 1,
-			"text": "星期日",
+			"text": "\n星期日",
 			"color": "0xffff0000",
 			"fontSize": 18,
 			"width": 0,
