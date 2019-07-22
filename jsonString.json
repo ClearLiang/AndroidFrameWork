@@ -3,17 +3,17 @@
 	"msg": "sucess",
 	"data": [{
 			"text": "今天是美好的",
-			"color": 0xffffff00,
+			"color": "0xffffff00",
 	  		"fontSize": 14
 		},
 		{
 			"text": "星期日",
-			"color": 0xffff0000,
+			"color": "0xffff0000",
 	  		"fontSize": 18
 		},
 		{
 			"text": "，我和小明",
-			"color": 0xffffff00,
+			"color": "0xffffff00",
 	  		"fontSize": 14
 		}
 	]
