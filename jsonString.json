@@ -4,7 +4,7 @@
 	"data": [{
 			"type": 1,
 			"text": "今天是美好的",
-			"color": "0xffffff00",
+			"color": "0xFF000000",
 			"fontSize": 14,
 			"width": 0,
 			"height": 0
@@ -28,7 +28,7 @@
 		{
 			"type": 1,
 			"text": "，我和小明",
-			"color": "0xffffff00",
+			"color": "0xFF000000",
 			"fontSize": 14,
 			"width": 0,
 			"height": 0
