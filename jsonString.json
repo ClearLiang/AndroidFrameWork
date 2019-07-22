@@ -3,7 +3,7 @@
 	"msg": "sucess",
 	"data": [{
 			"text": "今天是美好的",
-			"color": "0xffffff00",
+			"color": "0xFF000000",
 	  		"fontSize": 14.0
 		},
 		{
@@ -13,7 +13,7 @@
 		},
 		{
 			"text": "，我和小明",
-			"color": "0xffffff00",
+			"color": "0xFF000000",
 	  		"fontSize": 14.0
 		}
 	]
