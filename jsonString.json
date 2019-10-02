@@ -20,7 +20,7 @@
 		{
 			"type": 1,
 			"text": "\n星期日",
-			"color": "0xffff0000",
+			"color": "0xffff00",
 			"fontSize": 18,
 			"width": 0,
 			"height": 0
@@ -28,7 +28,7 @@
 		{
 			"type": 1,
 			"text": "，我和小明",
-			"color": "0xFF000000",
+			"color": "0xFF0000",
 			"fontSize": 14,
 			"width": 0,
 			"height": 0
